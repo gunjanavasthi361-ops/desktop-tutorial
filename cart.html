@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Cart - EcoMart</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="navbar">
+    <h1 class="logo">EcoMart</h1>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+    <nav>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="cart.html">Cart 🛒 (<span id="cart-count">0</span>)</a></li>
+        <li id="orders-nav" style="display:none"><a href="orders.html">Orders</a></li>
+        <li id="user-nav"><a href="login.html">Login</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="cart-page">
+    <h2>Your Shopping Cart</h2>
+    <div id="cart-items"></div>
+    <h3 id="cart-total"></h3>
+
+    <section class="checkout" id="checkout" style="display:none">
+      <h2>Checkout</h2>
+
+      <div class="address-card">
+        <h3>Delivery Information</h3>
+        <form id="address-form" class="address-form">
+          <div class="row">
+            <input id="addressLine1" placeholder="Address line 1" required>
+            <input id="addressLine2" placeholder="Address line 2">
+          </div>
+          <div class="row">
+            <input id="city" placeholder="City" required>
+            <input id="state" placeholder="State" required>
+          </div>
+          <div class="row">
+            <input id="postalCode" placeholder="Pincode" required inputmode="numeric" maxlength="6">
+            <input id="country" placeholder="Country" required>
+          </div>
+          <div class="row">
+            <input id="email" type="email" placeholder="Email" required>
+          </div>
+          <div class="row">
+            <input id="phone" placeholder="Phone" required>
+            <input id="alternatePhone" placeholder="Alternate Phone">
+          </div>
+          <div class="row">
+            <button type="submit" class="btn-primary">Save Delivery Info</button>
+          </div>
+          <p id="address-msg" class="muted"></p>
+        </form>
+      </div>
+
+      <div class="payment-card">
+        <h3>Payment Method</h3>
+        <div class="payment-options">
+          <label><input type="radio" name="payment" value="upi"> UPI</label>
+          <label><input type="radio" name="payment" value="card"> Card</label>
+          <label><input type="radio" name="payment" value="cod"> Cash on Delivery</label>
+        </div>
+
+        <div id="payment-details" style="display:none; margin-top:10px"></div>
+        <div id="payment-status" class="muted" style="display:none; margin-top:8px"></div>
+      </div>
+
+      <button id="place-order" class="btn-primary place-order">Place Order</button>
+      <p id="checkout-error" class="error" style="display:none"></p>
+      <p id="checkout-success" class="success" style="display:none"></p>
+    </section>
+
+    <div class="actions">
+      <button id="buy-now" class="btn-primary">Buy Now</button>
+    </div>
+  </main>
+
+  <script src="api.js"></script>
+  <script src="cart.js"></script>
+  <script>
+    try { renderAuthNav(); } catch {}
+    (function(){
+      const btn = document.getElementById('hamburger');
+      const links = document.getElementById('nav-links');
+      btn?.addEventListener('click', ()=> links?.classList.toggle('open'));
+      links?.querySelectorAll('a').forEach(a=> a.addEventListener('click', ()=> links.classList.remove('open')));
+    })();
+  </script>
+</body>
+</html>

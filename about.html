@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us - EcoMart</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="navbar">
+    <h1 class="logo">EcoMart</h1>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+    <nav>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#products">Products</a></li>
+        <li><a href="about.html" class="active">About</a></li>
+        <li><a href="cart.html">Cart 🛒 (<span id="cart-count">0</span>)</a></li>
+        <li id="orders-nav" style="display:none"><a href="orders.html">Orders</a></li>
+        <li id="user-nav"><a href="login.html">Login</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <main class="about-page">
+    <!-- Hero -->
+    <section class="about-hero">
+      <h1>About EcoMart</h1>
+      <p>Building a sustainable future, one eco-friendly product at a time.</p>
+    </section>
+
+    <!-- Mission & Vision -->
+    <section class="about-section">
+      <div class="about-box">
+        <i class="fas fa-seedling"></i>
+        <h2>Our Mission</h2>
+        <p>To provide affordable, eco-friendly, and sustainable alternatives that empower people to live a greener lifestyle while protecting our planet for future generations.</p>
+      </div>
+      <div class="about-box">
+        <i class="fas fa-globe"></i>
+        <h2>Our Vision</h2>
+        <p>We envision a world where every purchase makes a positive impact, reducing waste, conserving resources, and promoting sustainable living globally.</p>
+      </div>
+    </section>
+
+    <!-- Values -->
+    <section class="values">
+      <h2>Our Core Values</h2>
+      <ul>
+        <li><i class="fas fa-leaf"></i> Sustainability First</li>
+        <li><i class="fas fa-users"></i> Community Driven</li>
+        <li><i class="fas fa-handshake"></i> Ethical Partnerships</li>
+        <li><i class="fas fa-recycle"></i> Zero Waste Mindset</li>
+      </ul>
+    </section>
+
+    <!-- Team -->
+    <section class="team">
+      <h2>Meet Our Team</h2>
+      <div class="team-grid">
+        <div class="team-member">
+          <img src="https://via.placeholder.com/150" alt="Founder">
+          <h3>Gunjan Avasthi</h3>
+          <p>Founder & CEO</p>
+        </div>
+        <div class="team-member">
+          <img src="https://via.placeholder.com/150" alt="Co-Founder">
+          <h3>Mayuresh Desai</h3>
+          <p>Co-Founder & Sustainability Lead</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-section">
+        <h3>🌱 EcoMart</h3>
+        <p>Your trusted destination for eco-friendly, organic, and sustainable products.
+          Together, let’s build a greener tomorrow.</p>
+      </div>
+      <div class="footer-section">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html#products">Products</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Customer Support</h4>
+        <ul>
+          <li><a href="#">FAQs</a></li>
+          <li><a href="#">Shipping & Returns</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms & Conditions</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Stay Connected</h4>
+        <form id="newsletter-form">
+          <input type="email" placeholder="Enter your email" required>
+          <button type="submit">Subscribe</button>
+        </form>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 EcoMart. All Rights Reserved. | Designed with ♻️ Sustainability in mind</p>
+    </div>
+  </footer>
+
+  <!-- JS -->
+  <script src="api.js"></script>
+  <script>
+    try { renderAuthNav(); } catch {}
+    (function(){
+      const btn = document.getElementById('hamburger');
+      const links = document.getElementById('nav-links');
+      btn?.addEventListener('click', ()=> links?.classList.toggle('open'));
+      links?.querySelectorAll('a').forEach(a=> a.addEventListener('click', ()=> links.classList.remove('open')));
+    })();
+  </script>
+</body>
+</html>

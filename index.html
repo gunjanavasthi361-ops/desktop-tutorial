@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EcoMart – Eco-Friendly Products</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="navbar">
+    <h1 class="logo">EcoMart</h1>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+    <nav>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="cart.html">Cart 🛒 (<span id="cart-count">0</span>)</a></li>
+        <li id="orders-nav" style="display:none"><a href="orders.html">Orders</a></li>
+        <li id="user-nav"><a href="login.html">Login</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <section class="hero">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span>🌱 Sustainable Living</span>
+        </div>
+        <h1>Shop Eco-Friendly, Live Sustainably</h1>
+        <p>Discover organic, recycled, and reusable products curated for a greener tomorrow. Every purchase makes a
+          positive impact on the planet.</p>
+        <div class="hero-actions">
+          <a href="products.html" class="btn-primary">Start Shopping</a>
+          <a href="#features" class="btn-secondary">Learn More</a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat">
+            <span class="stat-number">10K+</span>
+            <span class="stat-label">Happy Customers</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number">500+</span>
+            <span class="stat-label">Eco Products</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number">50+</span>
+            <span class="stat-label">Partner Brands</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="why-choose" id="features">
+      <div class="section-header">
+        <h2>Why Choose EcoMart?</h2>
+        <p>We're committed to making sustainable living accessible and affordable for everyone</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature">
+          <div class="feature-icon-wrapper">
+            <i class="fas fa-leaf"></i>
+          </div>
+          <h3>Eco-Friendly Products</h3>
+          <p>All our products are biodegradable, recyclable, or sustainably sourced to protect the environment.</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon-wrapper">
+            <i class="fas fa-recycle"></i>
+          </div>
+          <h3>Sustainable Living</h3>
+          <p>We promote responsible consumption with eco-friendly alternatives for everyday needs.</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon-wrapper">
+            <i class="fas fa-hand-holding-heart"></i>
+          </div>
+          <h3>Support Local</h3>
+          <p>We empower small eco-conscious businesses by giving them a platform to reach customers.</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon-wrapper">
+            <i class="fas fa-truck"></i>
+          </div>
+          <h3>Fast & Reliable Delivery</h3>
+          <p>Get your favorite green products delivered to your doorstep quickly and safely.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="products-section">
+      <div class="section-header">
+        <h2>Featured Products</h2>
+        <p>Discover our carefully curated selection of eco-friendly products</p>
+      </div>
+      <div id="product-list" class="product-grid"></div>
+      <div class="products-cta">
+        <a href="products.html" class="btn-primary">View All Products</a>
+      </div>
+    </section>
+
+
+    <section class="reviews">
+      <h2>What Our Customers Say</h2>
+      <div class="review-grid">
+        <div class="review-card">
+          <p>"EcoMart has completely changed the way I shop. I feel good knowing every purchase supports
+            sustainability."</p>
+          <h4>- Priya Sharma</h4>
+        </div>
+        <div class="review-card">
+          <p>"Great quality products and fast delivery! I love the eco-friendly packaging too."</p>
+          <h4>- Arjun Patel</h4>
+        </div>
+        <div class="review-card">
+          <p>"I found affordable and eco-conscious options for daily use. Highly recommend EcoMart!"</p>
+          <h4>- Sneha Verma</h4>
+        </div>
+      </div>
+    </section>
+
+    <section class="newsletter-cta">
+      <h2>Join Our Green Community 🌍</h2>
+      <p>Subscribe to get updates on eco-friendly trends, new arrivals, and exclusive discounts.</p>
+      <form id="newsletter-form">
+        <input type="email" id="newsletter-email" placeholder="you@example.com" required>
+        <button type="submit">Subscribe</button>
+      </form>
+      <p id="newsletter-msg" class="muted" style="margin-top:8px"></p>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="footer-container">
+      <!-- About -->
+      <div class="footer-section">
+        <h3>🌱 EcoMart</h3>
+        <p>Your trusted destination for eco-friendly, organic, and sustainable products.
+          Together, let’s build a greener tomorrow.</p>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="footer-section">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Products</a></li>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Customer Support -->
+      <div class="footer-section">
+        <h4>Customer Support</h4>
+        <ul>
+          <li><a href="#">FAQs</a></li>
+          <li><a href="#">Shipping & Returns</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms & Conditions</a></li>
+        </ul>
+      </div>
+
+      <!-- Newsletter -->
+      <div class="footer-section">
+        <h4>Stay Connected</h4>
+        <form id="newsletter-form">
+          <input type="email" placeholder="Enter your email" required>
+          <button type="submit">Subscribe</button>
+        </form>
+        <div class="social-icons">
+          <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+          <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+          <a href="https://youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2025 EcoMart. All Rights Reserved. | Designed with ♻️ Sustainability in mind</p>
+    </div>
+  </footer>
+
+
+  <!-- Scripts -->
+  <script src="api.js"></script>
+  <script src="product.js"></script>
+  <script src="cart.js"></script>
+  <script>
+    try { renderAuthNav(); } catch {}
+    // simple newsletter UX
+    document.getElementById('newsletter-form')?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const email = document.getElementById('newsletter-email').value.trim();
+      const msg = document.getElementById('newsletter-msg');
+      if (!email) { return; }
+      msg.textContent = 'Thanks! We\'ll keep you updated.';
+      e.target.reset();
+    });
+
+    (function(){
+      const btn = document.getElementById('hamburger');
+      const links = document.getElementById('nav-links');
+      btn?.addEventListener('click', ()=> links?.classList.toggle('open'));
+      links?.querySelectorAll('a').forEach(a=> a.addEventListener('click', ()=> links.classList.remove('open')));
+    })();
+  </script>
+</body>
+
+</html>

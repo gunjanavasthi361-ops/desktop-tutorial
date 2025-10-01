@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up - Eco Shop</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="navbar">
+    <h1 class="logo">EcoMart</h1>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="cart.html">Cart 🛒 (<span id="cart-count">0</span>)</a></li>
+        <li id="orders-nav" style="display:none"><a href="orders.html">Orders</a></li>
+        <li id="user-nav"><a href="login.html">Login</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="auth-page">
+    <div class="auth-card">
+      <h1>Create your account</h1>
+      <p class="muted">Join EcoMart and start your sustainable journey</p>
+      <form id="signup-form" class="auth-form">
+        <label>Name
+          <input type="text" id="name" required placeholder="Your full name">
+        </label>
+        <label>Email
+          <input type="email" id="email" required placeholder="you@example.com">
+        </label>
+        <label>Password
+          <input type="password" id="password" required minlength="6" placeholder="••••••••">
+        </label>
+        <button type="submit" class="btn-primary" style="width:100%">Create account</button>
+        <p id="signup-error" class="error" style="display:none"></p>
+      </form>
+      <p class="muted" style="margin-top:10px">Already have an account? <a href="login.html">Login</a></p>
+    </div>
+  </main>
+
+  <script src="api.js"></script>
+  <script src="signup.js"></script>
+</body>
+</html>
+
+
+
+
+
+

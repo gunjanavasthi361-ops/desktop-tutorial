@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Orders - EcoMart</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="navbar">
+    <h1 class="logo">EcoMart</h1>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+    <nav>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="cart.html">Cart 🛒 (<span id="cart-count">0</span>)</a></li>
+        <li id="orders-nav" style="display:none"><a href="orders.html" class="active">Orders</a></li>
+        <li id="user-nav"><a href="login.html">Login</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container">
+    <h2>My Orders</h2>
+    <div id="orders-list" class="orders-list"></div>
+    <p id="orders-empty" class="muted" style="display:none">You have no orders yet.</p>
+    <p id="orders-error" class="error" style="display:none"></p>
+  </main>
+
+  <script src="api.js"></script>
+  <script>
+    (async function(){
+      try { renderAuthNav(); } catch {}
+      (function(){
+        const btn = document.getElementById('hamburger');
+        const links = document.getElementById('nav-links');
+        btn?.addEventListener('click', ()=> links?.classList.toggle('open'));
+        links?.querySelectorAll('a').forEach(a=> a.addEventListener('click', ()=> links.classList.remove('open')));
+      })();
+      const token = localStorage.getItem('authToken');
+      if (!token) { window.location.href = 'login.html'; return; }
+      const list = document.getElementById('orders-list');
+      const empty = document.getElementById('orders-empty');
+      const error = document.getElementById('orders-error');
+      try {
+        const orders = await fetchMyOrders(token);
+        if (!orders || orders.length === 0) { empty.style.display = 'block'; return; }
+        orders.forEach(o => {
+          const div = document.createElement('div');
+          div.className = 'order-card';
+          const total = (o.items || []).reduce((s,i)=> s + (i.price||0) * (i.quantity||1), 0);
+          // Group same products and sum their quantities
+          const groups = {};
+          (o.items || []).forEach(i => {
+            const key = i.productId || i._id || i.id || i.name;
+            if (!groups[key]) {
+              groups[key] = { name: i.name, image: i.image, price: i.price, quantity: 0 };
+            }
+            const q = Number(i.quantity || 1);
+            groups[key].quantity += isNaN(q) ? 1 : q;
+          });
+          const itemsHtml = Object.values(groups).map(i => `
+            <div class="order-item">
+              <img src="${i.image || ''}" alt="${i.name}" width="60" height="60">
+              <div class="order-item-info">
+                <span class="order-item-name">${i.name}</span>
+                <span class="order-item-price">₹${i.price}</span>
+              </div>
+              <div class="order-item-qty">
+                <span class="qty-badge">${i.quantity}</span>
+              </div>
+            </div>
+          `).join('');
+          const when = o.createdAt ? new Date(o.createdAt).toLocaleString() : '';
+          div.innerHTML = `
+            <div class="order-head">
+              <h3>Order #${o._id || o.id}</h3>
+              <span class="order-status">${o.status || 'Placed'}</span>
+            </div>
+            <div class="order-items">${itemsHtml}</div>
+            <div class="order-foot">
+              <p><strong>Total:</strong> ₹${total}</p>
+              <p class="muted">${when}</p>
+            </div>
+          `;
+          list.appendChild(div);
+        });
+      } catch (e) {
+        error.textContent = e.message || 'Failed to load orders';
+        error.style.display = 'block';
+      }
+    })();
+  </script>
+</body>
+</html>
+
+
